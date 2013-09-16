@@ -5,8 +5,8 @@ class coldfusion {
     
   file { $paths:
     ensure => directory,
-    owner  => 'deploy',
-    group  => 'deploy',
+    owner  => 'root',
+    group  => 'root',
     mode   => '0775',
   }
 
