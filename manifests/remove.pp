@@ -1,12 +1,12 @@
 class coldfusion::remove {
-  $paths = $operatingsystem ? {
+  $paths = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => [ '/opt/coldfusion10' ],
   }
-  
-  $service = $operatingsystem ? {
+
+  $service = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => 'coldfusion_10',
   }
-  
+
   file { '/etc/profile.d/coldfusion.sh':
     ensure => absent,
   }
