@@ -18,4 +18,8 @@ class coldfusion {
     source => 'puppet:///modules/coldfusion/coldfusion.profile'
   }
 
+  file { '/etc/httpd/conf/mod_jk.conf':
+    ensure => absent,
+  }
+
 }
