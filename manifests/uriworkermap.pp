@@ -1,7 +1,7 @@
 define coldfusion::uriworkermap (
-  $workers = '',
+  $worker = '',
 ) {
-  file { "${wsconfig}/uriworkermap.properties":
+  file { "/etc/httpd/jk.d/uri-${worker}-map.properties":
     ensure  => present,
     owner   => 'root',
     group   => 'root',
