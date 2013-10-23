@@ -15,8 +15,8 @@ coldfusion::service { 'default': ensure => running, enable => true }
 ```
 ```
 $clusters = {
-  c1 => { balance_workers => [ 'inst1', 'inst2' ] }
-  c2 => { balance_workers => [ 'inst3', 'inst4' ] }
+  c1 => { balance_workers => [ 'i1', 'i2' ] }
+  c2 => { balance_workers => [ 'i3', 'i4' ] }
 }
 ```
 ```
