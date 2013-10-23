@@ -13,10 +13,12 @@ include coldfusion
 ```
 coldfusion::service { 'default': ensure => running, enable => true }
 ```
+```
 $clusters = {
   clus1 => { balance_workers => [ 'inst1', 'inst2' ] }
   clus2 => { balance_workers => [ 'inst3', 'inst4' ] }
 }
+```
 ```
 $workers = {
   inst1 => { host => 'localhost', port => '8012' },
