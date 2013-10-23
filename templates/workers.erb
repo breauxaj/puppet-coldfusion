@@ -1,0 +1,20 @@
+# MANAGED BY PUPPET!
+<% if clusters and ! clusters.empty? -%>
+worker.list=<%= clusters.keys.join(",") %>
+<% end -%>
+
+<% if clusters and ! clusters.empty? -%>
+<% clusters.sort_by {|key, value| key}.each do |key, value| -%>
+worker.<%= key %>.type=lb
+worker.<%= key %>.balance_workers=<%= value['balance_workers'].join(",") %>
+<% end -%>
+<% end -%>
+
+<% if workers and ! workers.empty? -%>
+<% workers.sort_by {|key, value| key}.each do |key, value| -%>
+worker.<%= key %>.type=ajp13
+worker.<%= key %>.host=<%= value['host'] %>
+worker.<%= key %>.port=<%= value['port'] %>
+worker.<%= key %>.max_reuse_connections=250
+<% end -%>
+<% end -%>
