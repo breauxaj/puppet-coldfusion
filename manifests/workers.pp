@@ -1,4 +1,5 @@
 define coldfusion::workers (
+  $clusters = '',
   $workers = ''
 ) {
   file { '/etc/httpd/jk.d':
