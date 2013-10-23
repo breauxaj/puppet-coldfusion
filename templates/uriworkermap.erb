@@ -1,0 +1,27 @@
+# MANAGED BY PUPPET!
+<% if worker and ! worker.empty? -%>
+/cfformgateway/* = <%= worker %>
+/CFFormGateway/* = <%= worker %>
+/flex2gateway/* = <%= worker %>
+/flex2gateway = <%= worker %>
+/cffileservlet/* = <%= worker %>
+/CFFileServlet/* = <%= worker %>
+/cfform-internal/* = <%= worker %>
+/flashservices/gateway/* = <%= worker %>
+/flex-internal/* = <%= worker %>
+/rest/* = <%= worker %>
+/*.cfml/* = <%= worker %>
+/*.mxml = <%= worker %>
+/*.as = <%= worker %>
+/*.cfm = <%= worker %>
+/*.cfm/* = <%= worker %>
+/*.swc = <%= worker %>
+/*.cfml = <%= worker %>
+/*.cfc = <%= worker %>
+/*.cfc/* = <%= worker %>
+/*.cfr = <%= worker %>
+/*.cfswf = <%= worker %>
+/*.sws = <%= worker %>
+/*.jsp = <%= worker %>
+/*.hbmxml = <%= worker %>
+<% end -%>
