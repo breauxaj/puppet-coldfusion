@@ -15,16 +15,16 @@ coldfusion::service { 'default': ensure => running, enable => true }
 ```
 ```
 $clusters = {
-  clus1 => { balance_workers => [ 'inst1', 'inst2' ] }
-  clus2 => { balance_workers => [ 'inst3', 'inst4' ] }
+  c1 => { balance_workers => [ 'inst1', 'inst2' ] }
+  c2 => { balance_workers => [ 'inst3', 'inst4' ] }
 }
 ```
 ```
 $workers = {
-  inst1 => { host => 'localhost', port => '8012' },
-  inst2 => { host => 'localhost', port => '8013' },
-  inst3 => { host => 'localhost', port => '8014' },
-  inst4 => { host => 'localhost', port => '8015' },
+  i1 => { host => 'h1', port => '8012' },
+  i2 => { host => 'h2', port => '8012' },
+  i3 => { host => 'h1', port => '8013' },
+  i4 => { host => 'h2', port => '8013' },
 }
 ```
 ```
