@@ -11,10 +11,10 @@ define coldfusion::config (
   }
 
   file { '/etc/profile.d/coldfusion.sh':
-    ensure => present,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => template('coldfusion/profile.erb'),
   }
 
