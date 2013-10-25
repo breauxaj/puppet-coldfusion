@@ -2,15 +2,7 @@ define coldfusion::workers (
   $clusters = '',
   $workers = ''
 ) {
-  file { '/etc/httpd/jk.d':
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    require => Package['httpd'],
-  }
-
-  file { "/etc/httpd/jk.d/workers.properties":
+  file { '/etc/httpd/jk.d/workers.properties':
     ensure  => present,
     owner   => 'root',
     group   => 'root',

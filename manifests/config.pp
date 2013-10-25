@@ -36,4 +36,12 @@ define coldfusion::config (
     require => Package['httpd'],
   }
 
+  file { '/etc/httpd/jk.d':
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => Package['httpd'],
+  }
+
 }
