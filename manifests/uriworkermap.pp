@@ -7,6 +7,7 @@ define coldfusion::uriworkermap (
     group   => 'root',
     mode    => '0644',
     content => template('coldfusion/uriworkermap.erb'),
+    require => File['/etc/httpd/jk.d'],
   }
 
 }
