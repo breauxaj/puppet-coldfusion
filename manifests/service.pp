@@ -6,17 +6,19 @@ define coldfusion::service (
     /(?i-mx:centos|fedora|redhat|scientific)/ => 'coldfusion_10',
   }
 
-  service { $service:
+  service { "${service}_${name}":
     ensure  => $ensure,
     enable  => $enable,
-    require => File["/etc/init.d/${service}"],
+    require => File["/etc/init.d/${service}_${name}"],
   }
 
-  file { "/etc/init.d/${service}":
-    ensure => present,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
+  file { $name:
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    path    => "/etc/init.d/${service}_${name}",
+    content => template('coldfusion/init.erb'),
   }
 
 }

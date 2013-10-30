@@ -11,7 +11,8 @@ Samples
 include coldfusion
 ```
 ```
-coldfusion::service { 'default': ensure => running, enable => true }
+coldfusion::service { 'i1': ensure => running, enable => true }
+coldfusion::service { 'i3': ensure => running, enable => true }
 ```
 ```
 $clusters = {
@@ -32,4 +33,8 @@ coldfusion::workers { 'default':
   clusters => $clusters,
   workers => $workers,
 }
+```
+```
+coldfusion::uriworkermap { 'i1': }
+coldfusion::uriworkermap { 'i3': }
 ```
