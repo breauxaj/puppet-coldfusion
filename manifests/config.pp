@@ -18,6 +18,14 @@ define coldfusion::config (
     content => template('coldfusion/profile.erb'),
   }
 
+  file { '/etc/sysconfig/coldfusion':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template('coldfusion/sysconfig.erb'),
+  }
+
   file { '/usr/lib64/httpd/modules/mod_jk22.so':
     ensure  => present,
     owner   => 'root',

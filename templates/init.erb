@@ -3,6 +3,9 @@
 # chkconfig: 345 90 14
 # description: starts the ColdFusion MX server
 
+if [ -f /etc/sysconfig/coldfusion ]; then
+    . /etc/sysconfig/coldfusion
+fi
 
 PATH=/usr/xpg4/bin:/bin:/sbin:/usr/bin:/usr/sbin:$PATH
 CONNECTOR=""
