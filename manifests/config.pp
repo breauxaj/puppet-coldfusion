@@ -3,6 +3,10 @@ define coldfusion::config (
   $owner = 'deploy',
   $group = 'deploy'
 ) {
+  $depends = $::operatingsystem ? {
+    /(?i-mx:centos|fedora|redhat|scientific)/ => [ 'httpd' ],
+  }
+
   file { $cf_home:
     ensure => directory,
     owner  => $owner,
@@ -32,7 +36,7 @@ define coldfusion::config (
     group   => 'root',
     mode    => '0755',
     source  => 'puppet:///modules/coldfusion/mod_jk22.so',
-    require => Package['httpd'],
+    require => Package[$depends],
   }
 
   file { '/etc/httpd/conf.d/jk.conf':
@@ -41,7 +45,7 @@ define coldfusion::config (
     group   => 'root',
     mode    => '0644',
     source  => 'puppet:///modules/coldfusion/jk.conf',
-    require => Package['httpd'],
+    require => Package[$depends],
   }
 
   file { '/etc/httpd/jk.d':
@@ -49,7 +53,7 @@ define coldfusion::config (
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    require => Package['httpd'],
+    require => Package[$depends],
   }
 
 }
