@@ -38,3 +38,11 @@ coldfusion::workers { 'default':
 coldfusion::uriworkermap { 'i1': }
 coldfusion::uriworkermap { 'i3': }
 ```
+
+License
+-------
+GPL3
+
+Contact
+-------
+breauxaj AT gmail DOT com
