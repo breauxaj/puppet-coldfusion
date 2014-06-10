@@ -7,6 +7,7 @@ worker.list=<%= clusters.keys.join(",") %>
 <% clusters.sort_by {|key, value| key}.each do |key, value| -%>
 worker.<%= key %>.type=lb
 worker.<%= key %>.balance_workers=<%= value['balance_workers'].join(",") %>
+worker.<%= key %>.sticky_session=true
 <% end -%>
 <% end -%>
 
