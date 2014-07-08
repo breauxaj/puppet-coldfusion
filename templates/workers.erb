@@ -1,6 +1,6 @@
 # MANAGED BY PUPPET!
 <% if clusters and ! clusters.empty? -%>
-worker.list=<%= clusters.keys.join(",") %>
+worker.list=<%= clusters.keys.sort.join(",") %>
 <% end -%>
 
 <% if clusters and ! clusters.empty? -%>
