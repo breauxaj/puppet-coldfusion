@@ -6,7 +6,7 @@ define coldfusion::workers (
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/etc/httpd/jk.d',
   }
 
-  file { '${jkd}/workers.properties':
+  file { "${jkd}/workers.properties":
     ensure  => present,
     owner   => 'root',
     group   => 'root',
