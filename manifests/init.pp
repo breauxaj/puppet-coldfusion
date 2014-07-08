@@ -34,15 +34,6 @@ class coldfusion {
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/lib64/httpd/modules',
   }
 
-  file { "${modules}/mod_jk22.so":
-    ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    source  => 'puppet:///modules/coldfusion/mod_jk22.so',
-    require => Package[$depends],
-  }
-
   file { "${confd}/jk.conf":
     ensure  => present,
     owner   => 'root',
@@ -57,6 +48,15 @@ class coldfusion {
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
+    require => Package[$depends],
+  }
+
+  file { "${modules}/mod_jk22.so":
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    source  => 'puppet:///modules/coldfusion/mod_jk22.so',
     require => Package[$depends],
   }
 
