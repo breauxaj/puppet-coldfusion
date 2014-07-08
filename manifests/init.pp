@@ -30,11 +30,12 @@ class coldfusion {
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/lib64/httpd/modules',
   }
 
-  file { "${confd}/jk.conf":
+  file { 'jk.conf':
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
+    path    => "${confd}/jk.conf",
     source  => 'puppet:///modules/coldfusion/jk.conf',
   }
 
