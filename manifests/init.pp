@@ -18,10 +18,6 @@
 #    class { 'coldfusion': }
 #
 class coldfusion {
-  $depends = $::operatingsystem ? {
-    /(?i-mx:centos|fedora|redhat|scientific)/ => [ 'httpd' ],
-  }
-
   $confd = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/etc/httpd/conf.d',
   }
@@ -40,15 +36,13 @@ class coldfusion {
     group   => 'root',
     mode    => '0644',
     source  => 'puppet:///modules/coldfusion/jk.conf',
-    require => Package[$depends],
   }
 
-  file { "${jkd}":
+  file { $jkd:
     ensure  => directory,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    require => Package[$depends],
   }
 
   file { "${modules}/mod_jk22.so":
@@ -57,7 +51,6 @@ class coldfusion {
     group   => 'root',
     mode    => '0755',
     source  => 'puppet:///modules/coldfusion/mod_jk22.so',
-    require => Package[$depends],
   }
 
 }
