@@ -43,7 +43,7 @@ class coldfusion {
     require => Package[$depends],
   }
 
-  file { $jkd:
+  file { "${jkd}":
     ensure  => directory,
     owner   => 'root',
     group   => 'root',
