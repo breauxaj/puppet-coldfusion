@@ -18,7 +18,19 @@
 #    class { 'coldfusion': }
 #
 class coldfusion {
-  file { '/etc/httpd/conf.d/jk.conf':
+  $confd = $::operatingsystem ? {
+    /(?i-mx:centos|fedora|redhat|scientific)/ => '/etc/httpd/conf.d',
+  }
+
+  $jkd = $::operatingsystem ? {
+    /(?i-mx:centos|fedora|redhat|scientific)/ => '/etc/httpd/jk.d',
+  }
+
+  $modules = $::operatingsystem ? {
+    /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/lib64/httpd',
+  }
+
+  file { "${confd}/jk.conf":
     ensure  => present,
     owner   => 'root',
     group   => 'root',
@@ -26,14 +38,14 @@ class coldfusion {
     source  => 'puppet:///modules/coldfusion/jk.conf',
   }
 
-  file { '/etc/httpd/jk.d':
+  file { $jkd:
     ensure  => directory,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
   }
 
-  file { '/usr/lib64/httpd/mod_jk22.so':
+  file { "${modules}/mod_jk22.so":
     ensure  => present,
     owner   => 'root',
     group   => 'root',
