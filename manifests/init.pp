@@ -27,7 +27,7 @@ class coldfusion {
   }
 
   $modules = $::operatingsystem ? {
-    /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/lib64/httpd',
+    /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/lib64/httpd/modules',
   }
 
   file { "${confd}/jk.conf":
